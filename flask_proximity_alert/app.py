@@ -5,6 +5,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/', methods=['GET'])
+def index():
+    return "Flask is running!"
+
 @app.route('/check_proximity', methods=['POST'])
 def check_proximity():
     data = request.get_json()
@@ -21,4 +25,4 @@ def check_proximity():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
